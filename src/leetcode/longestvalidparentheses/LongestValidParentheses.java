@@ -7,36 +7,35 @@ import javax.lang.model.element.VariableElement;
 /**
  * 给定一个只包含 '(' 和 ')' 的字符串，
  * 找出最长的包含有效括号的子串的长度。
- * 
+ * <p>
  * 示例 1:
- * 
+ * <p>
  * 输入: "(()"
  * 输出: 2
  * 解释: 最长有效括号子串为 "()"
- * 
+ * <p>
  * 示例 2:
- * 
+ * <p>
  * 输入: ")()())"
  * 输出: 4
  * 解释: 最长有效括号子串为 "()()"
- * 
- * @author ASUS
  *
+ * @author ASUS
  */
 public class LongestValidParentheses {
-	
-	public static void main(String[] args) {
-		String s = ")()())";
-		Solution solution = new Solution();
-		int res = solution.longestValidParentheses(s);
-		System.out.println(res);
-	}
-	
+
+    public static void main(String[] args) {
+        String s = ")()())";
+        Solution solution = new Solution();
+        int res = solution.longestValidParentheses(s);
+        System.out.println(res);
+    }
+
 }
 
 class Solution {
-	public int longestValidParentheses(String s) {
-        if (s == null||s.length()==0) {
+    public int longestValidParentheses(String s) {
+        if (s == null || s.length() == 0) {
             return 0;
         }
         char[] cs = s.toCharArray();
@@ -57,10 +56,10 @@ class Solution {
                     int index = i - l - 1;
                     if (index >= 0) {
                         if (cs[index] == '(') {
-                        	dp[i] = dp[i - 1] + 2;
-                        	if(index>0){
-                        		dp[i]+=dp[index-1];
-                        	}
+                            dp[i] = dp[i - 1] + 2;
+                            if (index > 0) {
+                                dp[i] += dp[index - 1];
+                            }
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 package leetcode.addtownumbers;
 
-public class AddTowNumbers{
+public class AddTowNumbers {
     /**
      * 给出两个 非空 的链表用来表示两个非负的整数。
      * 其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
@@ -18,22 +18,22 @@ public class AddTowNumbers{
         ListNode l2 = new ListNode(5);
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
-        ListNode res = addTowNumbers(l1,l2);
+        ListNode res = addTowNumbers(l1, l2);
         res.out();
     }
 
-    public static ListNode addTowNumbers(ListNode l1,ListNode l2) {
-        if(l1 == null) {
+    public static ListNode addTowNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null) {
             return l2;
         }
-        if(l2 == null) {
+        if (l2 == null) {
             return l1;
         }
         ListNode dummy = new ListNode(0);
         ListNode current = dummy;
         int carry = 0;
-        while(l1 != null && l2 != null) {
-            int dig = l1.val+l2.val+carry;
+        while (l1 != null && l2 != null) {
+            int dig = l1.val + l2.val + carry;
             int val = dig % 10;
             carry = dig / 10;
             ListNode newNode = new ListNode(val);
@@ -42,21 +42,21 @@ public class AddTowNumbers{
             l1 = l1.next;
             l2 = l2.next;
         }
-        while(l1 != null) {
-            int val = (l1.val+carry) % 10;
+        while (l1 != null) {
+            int val = (l1.val + carry) % 10;
             carry = (l1.val + carry) / 10;
             current.next = new ListNode(val);
             current = current.next;
             l1 = l1.next;
         }
-        while(l2 != null) {
-            int val = (l2.val+carry) % 10;
+        while (l2 != null) {
+            int val = (l2.val + carry) % 10;
             carry = (l2.val + carry) / 10;
             current.next = new ListNode(val);
             current = current.next;
             l2 = l2.next;
         }
-        if(carry != 0) {
+        if (carry != 0) {
             current.next = new ListNode(carry);
         }
         return dummy.next;
