@@ -6,14 +6,15 @@ import java.util.Map;
 
 public class TowSum {
     public static void main(String[] args) {
-        int[] nums = {2,7,11,15};
+        int[] nums = {2, 7, 11, 15};
         int targer = 9;
         Solution solution = new Solution();
         int[] res = solution.twoSum(nums, targer);
         System.out.println(Arrays.toString(res));
     }
-    
+
 }
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
@@ -24,11 +25,11 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
             int val = target - num;
-            if(map.containsKey(val)){
+            if (map.containsKey(val)) {
                 res[0] = i;
-                res[1] = (int) map.get(val);
+                res[1] = map.get(val);
                 return res;
-            }else{
+            } else {
                 map.put(num, i);
             }
         }

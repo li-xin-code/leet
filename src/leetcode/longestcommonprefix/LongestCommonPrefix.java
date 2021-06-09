@@ -3,21 +3,21 @@ package leetcode.longestcommonprefix;
 /**
  * @author lx
  * @date 2021/4/16
- *
+ * <p>
  * 编写一个函数来查找字符串数组中的最长公共前缀。
  * 如果不存在公共前缀，返回空字符串 ""。
  * 示例 1：
- *
+ * <p>
  * 输入：strs = ["flower","flow","flight"]
  * 输出："fl"
  * 示例 2：
- *
+ * <p>
  * 输入：strs = ["dog","racecar","car"]
  * 输出：""
  * 解释：输入不存在公共前缀。
- *
+ * <p>
  * 提示：
- *
+ * <p>
  * 0 <= strs.length <= 200
  * 0 <= strs[i].length <= 200
  * strs[i]
@@ -25,7 +25,7 @@ package leetcode.longestcommonprefix;
 public class LongestCommonPrefix {
     public static void main(String[] args) {
         // {"flower", "flow", "flight"}
-        String[] strs = {"a","a"};
+        String[] strs = {"a", "a"};
         Solution solution = new Solution();
         String result = solution.longestCommonPrefix(strs);
         System.out.println(result);
@@ -63,7 +63,7 @@ class Solution {
             return "";
         }
         int index = helper(strs, 0, 0, strs[0].charAt(0));
-        return index > 0 ? strs[0].substring(0,index) : "";
+        return index > 0 ? strs[0].substring(0, index) : "";
     }
 
     private int helper(String[] strs, int sIndex, int cIndex, char c) {
@@ -76,7 +76,7 @@ class Solution {
         if (strs[sIndex].length() <= cIndex)
             return cIndex;
         if (strs[sIndex].charAt(cIndex) == c)
-            return helper(strs, sIndex+1, cIndex, c);
+            return helper(strs, sIndex + 1, cIndex, c);
         return cIndex;
     }
 }
