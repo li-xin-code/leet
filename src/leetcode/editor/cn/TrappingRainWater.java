@@ -18,13 +18,21 @@ public class TrappingRainWater {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int trap(int[] height) {
-            int result = 0;
-            for (int i = 1; i < height.length - 1; i++) {
-                int t = Math.max(Math.min(height[i - 1], height[i + 1]) - height[i], 0);
-                height[i] = t;
-                result+= t;
+            int ans = 0;
+            int left = 0, right = height.length - 1;
+            int leftMax = 0, rightMax = 0;
+            while (left < right) {
+                leftMax = Math.max(leftMax, height[left]);
+                rightMax = Math.max(rightMax, height[right]);
+                if (height[left] < height[right]) {
+                    ans += leftMax - height[left];
+                    ++left;
+                } else {
+                    ans += rightMax - height[right];
+                    --right;
+                }
             }
-            return result;
+            return ans;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
